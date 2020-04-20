@@ -19,19 +19,16 @@ public class Rule {
 
     @JacksonXmlElementWrapper(localName = "file_pattern", useWrapping = false)
     private FilePattern file_pattern;
-
-    @JacksonXmlElementWrapper(localName = "files")
-    private List<String> file;
-
-    @JacksonXmlElementWrapper(localName = "text_pattern", useWrapping = false)
-    private TextPattern text_pattern;
-
-    @JacksonXmlElementWrapper(localName = "remediation", useWrapping = false)
-    private Remediation remediation;
+    
+    @JacksonXmlElementWrapper(localName = "pattern_list", useWrapping = false)
+    private List<RemidiationPattern> pattern_list;
     
     @JacksonXmlElementWrapper(localName = "file_operation_type", useWrapping = false)
     private FileOperationType file_operation_type;
 
+    @JacksonXmlElementWrapper(localName = "remediation", useWrapping = false)
+    private Remediation remediation;
+    
     public String getType() {
         return type;
     }
@@ -64,36 +61,20 @@ public class Rule {
         this.file_pattern = file_pattern;
     }
 
-    public List<String> getFile() {
-		return file;
-	}
-
-	public void setFile(List<String> file) {
-		this.file = file;
-	}
-
-	public TextPattern getText_pattern() {
-        return text_pattern;
-    }
-
-    public void setText_pattern(TextPattern text_pattern) {
-        this.text_pattern = text_pattern;
-    }
-
-    public Remediation getRemediation() {
-        return remediation;
-    }
-
-    public void setRemediation(Remediation remediation) {
-        this.remediation = remediation;
-    }
-
 	public FileOperationType getFile_operation_type() {
 		return file_operation_type;
 	}
 
 	public void setFile_operation_type(FileOperationType file_operation_type) {
 		this.file_operation_type = file_operation_type;
+	}
+
+	public List<RemidiationPattern> getPattern_list() {
+		return pattern_list;
+	}
+
+	public void setPattern_list(List<RemidiationPattern> pattern_list) {
+		this.pattern_list = pattern_list;
 	}
 
 	public Rule() {
@@ -104,9 +85,12 @@ public class Rule {
         this.category = category;
     }
 
-    @Override public String toString() {
-        return "Rule{" + "complexity='" + complexity + '\'' + "file_pattern='" + file_pattern + '\'' +
-                + '\'' + "file='" + file + '\'' + "file_operation_type=" + file_operation_type +
-                "text_pattern='" + text_pattern + '\'' + "remediation='" + remediation + '\'' + '}';
-    }
+	public Remediation getRemediation() {
+		return remediation;
+	}
+
+	public void setRemediation(Remediation remediation) {
+		this.remediation = remediation;
+	}
+
 }
